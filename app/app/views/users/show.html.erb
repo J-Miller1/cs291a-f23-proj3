@@ -1,0 +1,13 @@
+<h1><%= @user.email %></h1>
+
+<p><%= @user.bio %></p>
+
+<ul>
+  <li><%= link_to "Edit User Info", edit_user_path(@user) %></li>
+</ul>
+
+<li><%= link_to "Delete User", user_path(@user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure??"
+                  } %></li>
+</ul>
