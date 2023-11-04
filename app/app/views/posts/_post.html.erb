@@ -1,0 +1,12 @@
+<p>
+    <strong>-</strong>
+    <%= post.body %>
+
+    <h4>Comments:</h4>
+    <% post.comments.each do |comment| %>      
+        <p>
+          <%= "    " + comment.email + ": " + comment.body %>
+        </p>
+      <% end %>
+
+</p>

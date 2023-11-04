@@ -4,10 +4,14 @@
 
 <ul>
   <li><%= link_to "Edit User Info", edit_user_path(@user) %></li>
-</ul>
-
-<li><%= link_to "Delete User", user_path(@user), data: {
+  <li><%= link_to "Delete User", user_path(@user), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure??"
                   } %></li>
 </ul>
+
+<h2>Create New Post</h2>
+<%= render 'posts/form' %>
+
+<h2>Post History</h2>
+<%= render @user.posts %>
