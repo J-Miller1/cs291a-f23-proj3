@@ -3,7 +3,11 @@ class PostsController < ApplicationController
         @user = User.find(params[:user_id])
         @post = @user.posts.create(post_params)
         @comments = @post.comments
-        redirect_to user_path(@user)
+        if @post.save
+            redirect_to user_path(@user)
+        else
+            render "users/show", status: :unprocessable_entity
+        end
     end
 
     def show

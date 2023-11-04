@@ -1,6 +1,11 @@
 <%= form_with model: [ @user, @user.posts.build ] do |form| %>
     <p>
       <%= form.text_area :body %>
+      <% @user.posts.each do |post| %>
+        <% post.errors.full_messages_for(:body).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      <% end %>
     </p>
     <p>
       <%= form.submit %>
