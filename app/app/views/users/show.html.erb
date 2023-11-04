@@ -14,4 +14,16 @@
 <%= render 'posts/form' %>
 
 <h2>Post History</h2>
-<%= render @user.posts %>
+<% @user.posts.each do |post| %>
+  <h3>
+    <%= post.body %>
+  </h3>
+  <%= link_to "Go To Post", post %>
+  <h4>Comments:</h4>
+  <% post.comments.each do |comment| %>      
+      <p>
+        <%= comment.email + ": " + comment.body %>
+      </p>
+  <% end %>
+  <br\>
+<% end %>

@@ -2,10 +2,10 @@ class CommentsController < ApplicationController
     def create
         @post = Post.find(params[:post_id])
         @comment = @post.comments.create(comment_params)
-        redirect_to post_path(@post)
+        @user = User.find(@post.user_id)
 
         if @comment.save
-            redirect_to User.find(@post.user_id)
+            redirect_to @user
         else
             render :new, status: :unprocessable_entity
         end
