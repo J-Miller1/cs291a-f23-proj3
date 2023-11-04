@@ -15,15 +15,18 @@
 
 <h2>Post History</h2>
 <% @user.posts.each do |post| %>
-  <h3>
-    <%= post.body %>
-  </h3>
-  <%= link_to "Go To Post", post %>
-  <h4>Comments:</h4>
-  <% post.comments.each do |comment| %>      
-      <p>
-        <%= comment.email + ": " + comment.body %>
-      </p>
+  <% if not post.id.nil? %>
+    <h3>
+      <%= post.body %>
+    </h3>
+    <%= link_to "Go To Post", post %>
+    <h4>Comments:</h4>
+    <% post.comments.each do |comment| %>      
+        <p>
+          <%= comment.email + ": " + comment.body %>
+        </p>
+    <% end %>
   <% end %>
-  <br\>
 <% end %>
+
+<%= link_to "Go Home", root_path %>

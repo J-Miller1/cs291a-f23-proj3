@@ -2,9 +2,27 @@
 
 <ul>
   <% @users.each do |user| %>
+    <h2>
     <li>
         <%= link_to user.email, user %>
     </li>
+    </h2>
+    <h3>Post History</h3>
+    <% user.posts.each do |post| %>
+      <% if not post.id.nil? %>
+        <h3>
+          <%= post.body %>
+        </h3>
+        <h4>Comments:</h4>
+        <li>
+        <% post.comments.each do |comment| %>      
+            <p>
+              <%= comment.email + ": " + comment.body %>
+            </p>
+        <% end %>
+        </li>
+      <% end %>
+    <% end %>
   <% end %>
 </ul>
 
