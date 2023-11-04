@@ -1,4 +1,7 @@
 <h1>
+    <%= User.find(@post.user_id).email + " says: " %>
+</h1>
+<h1>
     <%= @post.body %>
 </h1>
 

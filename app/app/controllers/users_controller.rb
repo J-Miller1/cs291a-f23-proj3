@@ -4,8 +4,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => ex
+      redirect_to "/404"
+    end
   end
+
+  # def not_found
+  #   raise ActionController::RoutingError.new("Not Found")
+  # end
 
   def new
     @user = User.new

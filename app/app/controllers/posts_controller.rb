@@ -11,7 +11,11 @@ class PostsController < ApplicationController
     end
 
     def show
+      begin
         @post = Post.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => ex
+        redirect_to "/404"
+      end
     end
 
     def edit
